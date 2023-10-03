@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" index Component={() => <h1>Homepage</h1>} />
+      <Route path="/feedback/:id" Component={() => <h1>FeedbackDetails</h1>} />
+      <Route path="/new-feedback" Component={() => <h1>NewFeedback</h1>} />
+      <Route
+        path="/edit-feedback/:id"
+        Component={() => <h1>EditFeedback</h1>}
+      />
+      <Route path="/roadmap" Component={() => <h1>Roadmap</h1>} />
+    </Routes>
   );
 }
 
 export default App;
+
+//useRoutes ?
