@@ -15,9 +15,9 @@ aside {
   align-items: start;
   padding: 3rem;
   font-family: Jost, sans-serif;
-}
+
 .sidebar-header {
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 10px;
   background-image: url("../assets/suggestions/desktop/background-header.png");
   background-repeat: no-repeat;
@@ -41,12 +41,13 @@ aside {
 }
 .buttons {
   margin-top: 20px;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   background-color: #fff;
   border-radius: 10px;
+ 
 }
 label {
   background-color: #f2f4ff;
@@ -56,6 +57,8 @@ label {
   font-size: 13px;
   border-radius: 10px;
   min-width: 25%;
+  text-align: center;
+  cursor: pointer;
 }
 label:active {
   background-color: #4661e6;
@@ -65,16 +68,78 @@ label:active {
   margin-top: 30px;
   border-radius: 10px;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
+
 }
 .title {
   display: flex;
   justify-content: space-between;
 }
-ul > div {
+
+.title p{
+  font-size: 13px;
+  font-weight: 600;
+  color: #4661E6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+ul {
   margin-top: 20px;
   margin-left: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  list-style: none;
+
+}
+
+
+li{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-block: 0.5rem;
+  
+
+  &::before {
+    content: '';
+    display: flex;
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    left: -20px;
+    bottom: 7px;
+    position: absolute;
+  }
+  span{
+    text-transform: capitalize;
+    color: #647196;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  :last-child{
+   font-weight: 700;
+  }
+  
+}
+
+.planned::before{
+  background-color: #F49F85;;
+}
+
+.in-progress::before{
+  background-color: #AD1FEA;
+}
+
+.live::before{
+  background-color: #62BCFA;
+}
+
+.suggestion::before{
+  background-color: #4661E6;
+}
+
 }
