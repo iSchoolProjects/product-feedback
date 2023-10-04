@@ -1,0 +1,35 @@
+.details-section{
+    width: 48%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.navigation-feedback{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-feedback button{
+    border: 0;
+    padding: 12px 25px;
+    border-radius: 10px;
+    background-color: #4661E6;
+    color: #ffff;
+}
+
+.navigation a{
+    text-decoration: none;
+    margin-left:15px;
+    color: #647196;
+    font-weight: 700;
+}
+
+.comments{
+    padding: 28px 32px;
+    background-color: #ffff;
+    margin-top: 24px;
+}
+
+.comments h3{
+    color: #3A4374;
+}

@@ -1,0 +1,133 @@
+
+.suggestion{
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   margin-top: 24px;
+   background-color: #ffff;
+   padding: 28px 32px;
+   border-radius: 10px;
+}
+
+.suggestion:hover{
+    cursor: pointer;
+}
+
+.suggestion:hover h3{
+    color:#4661E6;
+}
+
+.left-side{
+    display: flex;
+    justify-content: space-between;
+}
+
+.click-num{
+    background-color: #F2F4FE;
+    border-radius: 10px;
+    padding:9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.click-num:hover{
+   cursor: pointer;
+   background-color: #CFD7FF;
+}
+
+.click-num img{
+    margin-bottom: 8px;
+}
+
+.text h3{
+    color: #3A4374;
+}
+
+.text p{
+    margin-top: 5px;
+    margin-bottom:12px;
+    color: #647196;
+}
+
+.suggestion button{
+    border: 0;
+    padding:10px 16px;
+    border-radius: 10px;
+    background-color: #F2F4FE;
+    color:#4661E6;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.right-side{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+
+@media screen and (max-width:768px) {
+    section{
+        padding-inline: 25px;
+    }
+
+    .suggestion{
+        flex-direction: column;
+    }
+    .left-side{
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .click-num{
+        order: 4;
+        transform: translateY(30px);
+        flex-direction: row;
+    }
+
+    .click-num img{
+        margin: auto;
+    }
+
+    .click-num h5{
+        margin-left: 10px;
+    }
+
+    .right-side{
+        margin-inline: auto;
+    }
+}
+
+@media screen and (min-width:768px) {
+     section{
+        padding-inline: 39px;
+     }
+
+     .suggestion{
+        flex-direction: row;
+     }
+
+     .left-side{
+        flex-direction: row;
+    }
+
+     .click-num{
+        margin-right: 40px;
+        order: unset;
+        transform: none;
+        flex-direction: column;
+        height: 53px;
+     }
+
+     .right-side{
+        margin-inline: 0;
+     }
+}
+
+@media screen and (min-width:992px) {
+    .suggestion-width{
+        width:48%;
+    }
+
+}
