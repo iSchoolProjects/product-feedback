@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-// pravimo state za iteme, kad se komponenta ucita pokrenucemo fiju
-//getByStatus i njen rezultat upisujemo u state,  a sam state cemo ispisivati na mjestu gdje treba ispisati iteme
-// kad setujemo state, posto znamo da je objekat,
-//putem objectEntries cemo ispisati podatke, on vraca niz nizova, na taj metod vezujemo map da bi mogli ispisati
+
 export default function Sidebar({ products, label, status }) {
   const [item, setItem] = useState();
   const getByStatus = () => {
@@ -68,3 +65,7 @@ export default function Sidebar({ products, label, status }) {
 
 // pravimo state za iteme, kad se komponenta ucita pokrenucemo fiju getByStatus i njen rezultat upisujemo u state,  a sam state cemo ispisivati na mjestu gdje treba ispisati iteme
 // kad setujemo state, posto znamo da je objekat, putem objectEntries cemo ispisati podatke, on vraca niz nizova, na taj metod vezujemo map da bi mogli ispisati
+// pravimo state za iteme, kad se komponenta ucita pokrenucemo fiju
+//getByStatus i njen rezultat upisujemo u state,  a sam state cemo ispisivati na mjestu gdje treba ispisati iteme
+// kad setujemo state, posto znamo da je objekat,
+//putem objectEntries cemo ispisati podatke, on vraca niz nizova, na taj metod vezujemo map da bi mogli ispisati
