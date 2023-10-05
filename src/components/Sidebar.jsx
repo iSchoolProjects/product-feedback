@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 export default function Sidebar({ products, label, status }) {
+  const [filters, setFilter] = useState([]);
   const [item, setItem] = useState();
   const getByStatus = () => {
     const newObject = {};
-    console.log(products);
     for (const current of products) {
       if (newObject[current.status]) {
         newObject[current.status]++;
@@ -18,6 +18,24 @@ export default function Sidebar({ products, label, status }) {
   useEffect(() => {
     getByStatus();
   }, []);
+  const handleClick = (pill) => {
+    let filteredData = [...filters];
+    if (filters.includes(pill)) {
+      filteredData = filteredData.filter((element) => element !== pill);
+    } else {
+      filteredData.push(pill);
+    }
+    if (pill === "All") filteredData = [];
+    if (filteredData.length === pills.length - 1) filteredData = [];
+    setFilter(filteredData);
+  };
+  //da li je pill all
+  //handleClick funkcija koja prima naziv kliknutog elementa i radi
+  // provjerava state koji se zove filters, ima li tog elementa
+  // ako ima izbacuje ga, u suprotnom ga dodaje
+  // nakon tih provjera, setuje filter state na nove vrijednosti
+  //ptreban nam je state, prazan niz je pocetna vr
+  console.log(filters);
   const pills = ["All", "UI", "UX", "Enchancement", "Bug", "Feature"];
   return (
     <>
@@ -29,7 +47,16 @@ export default function Sidebar({ products, label, status }) {
         <div className="buttons">
           {pills.map((pill) => (
             <>
-              <label htmlFor={pill}>{pill} </label>
+              <label
+                active={(
+                  filters.includes(pill) ||
+                  (pill === "All" && filters.length === 0)
+                ).toString()}
+                htmlFor={pill}
+                onClick={() => handleClick(pill)}
+              >
+                {pill}{" "}
+              </label>
               <input type="checkbox" label={label} name="maja" id={pill} />
             </>
           ))}
