@@ -1,10 +1,12 @@
-import React from 'react';
-import { Route, Routes } from 'react-router';
+import React from "react";
+import { Route, Routes } from "react-router";
+import "./App.css";
+import Home from "./components/Home";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" index Component={() => <h1>Homepage</h1>} />
+      <Route path="/" index Component={Home} />
       <Route path="/feedback/:id" Component={() => <h1>FeedbackDetails</h1>} />
       <Route path="/new-feedback" Component={() => <h1>NewFeedback</h1>} />
       <Route
@@ -17,5 +19,3 @@ function App() {
 }
 
 export default App;
-
-//useRoutes ?
