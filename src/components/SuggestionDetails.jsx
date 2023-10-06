@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { data } from '../data';
+import NewComment from './CommentCharacters';
+import CommentsHolder from './CommentsHolder';
 
-export default function SuggestionDetails({ detail }) {
+export default function SuggestionDetails({
+  detail = data.productRequests[1],
+}) {
+  const [isReplyOpen, setIsReplyOpen] = useState();
+
+  const handleClick = (currentReply) => {
+    setIsReplyOpen(currentReply);
+  };
   return (
     <>
       <div className="details-section">
         <div className="navigation-feedback">
           <div className="navigation">
-            <img src="./assets/shared/icon-arrow-left.svg" alt="" />
+            <img src="../assets/shared/icon-arrow-left.svg" alt="" />
             <a href="#">Go Back</a>
           </div>
           <button>Edit Feedback</button>
@@ -14,7 +24,7 @@ export default function SuggestionDetails({ detail }) {
         <div className="suggestion">
           <div className="left-side">
             <div className="click-num">
-              <img src="./assets/shared/icon-arrow-up.svg" alt="" />
+              <img src="../assets/shared/icon-arrow-up.svg" alt="" />
               <h5> {detail.upvotes}</h5>
             </div>
             <div className="text">
@@ -24,12 +34,22 @@ export default function SuggestionDetails({ detail }) {
             </div>
           </div>
           <div className="right-side">
-            <img src="./assets/shared/icon-comments.svg" alt="" />
+            <img src="../assets/shared/icon-comments.svg" alt="" />
             <h4>{detail.comments?.length}</h4>
           </div>
         </div>
-        <div className="comments">
-          <h3>Comments</h3>
+        <div className="comments-holder">
+          <h3>{detail.comments?.length} Comments</h3>
+          {detail.comments.map((comment) => (
+            <CommentsHolder
+              comment={comment}
+              handleClick={handleClick}
+              isReplyOpen={isReplyOpen}
+            />
+          ))}
+        </div>
+        <div className="add-comment-holder">
+          <NewComment></NewComment>
         </div>
       </div>
     </>

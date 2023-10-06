@@ -6,15 +6,15 @@ import { data } from './data';
 import SuggestionDetails from './components/SuggestionDetails';
 import { Route, Routes } from 'react-router';
 
-function App() {
-  return <SuggestionDetails detail={data.productRequests[0]} />;
-}
+// function App() {
+//   return <SuggestionDetails detail={data.productRequests[0]} />;
+// }
 
 function App() {
   return (
     <Routes>
-      <Route path="/" index Component={() => <h1>Homepage</h1>} />
-      <Route path="/feedback/:id" Component={() => <h1>FeedbackDetails</h1>} />
+      <Route path="/" index Component={SuggestionsList} />
+      <Route path="/feedback/:id" Component={SuggestionDetails} />
       <Route path="/new-feedback" Component={() => <h1>NewFeedback</h1>} />
       <Route
         path="/edit-feedback/:id"

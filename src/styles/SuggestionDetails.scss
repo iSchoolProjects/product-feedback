@@ -1,35 +1,237 @@
-.details-section{
-    width: 48%;
-    margin: auto;
-    margin-top: 80px;
+.details-section {
+  width: 48%;
+  margin: auto;
+  margin-top: 80px;
 }
 
-.navigation-feedback{
-    display: flex;
-    justify-content: space-between;
+.navigation-feedback {
+  display: flex;
+  justify-content: space-between;
 }
 
-.navigation-feedback button{
-    border: 0;
-    padding: 12px 25px;
-    border-radius: 10px;
-    background-color: #4661E6;
-    color: #ffff;
+.navigation-feedback button {
+  border: 0;
+  padding: 12px 25px;
+  border-radius: 10px;
+  background-color: #4661e6;
+  color: #ffff;
 }
 
-.navigation a{
-    text-decoration: none;
-    margin-left:15px;
-    color: #647196;
-    font-weight: 700;
+.navigation-feedback button:hover {
+  cursor: pointer;
+  background-color: #7c91f9;
 }
 
-.comments{
-    padding: 28px 32px;
-    background-color: #ffff;
-    margin-top: 24px;
+.navigation a {
+  text-decoration: none;
+  margin-left: 15px;
+  color: #647196;
+  font-weight: 700;
 }
 
-.comments h3{
-    color: #3A4374;
+.comments-holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-holder h3 {
+  color: #3a4374;
+}
+
+.comments-holder,
+.add-comment-holder {
+  background: #fff;
+  margin-top: 24px;
+  padding: 28px 32px;
+}
+
+.comments {
+  background-color: #ffff;
+  position: relative;
+}
+
+.comments h3,
+.add-comment-holder h3 {
+  color: #3a4374;
+}
+
+.comments p {
+  color: #647196;
+  width: 85%;
+}
+
+.user-reply button {
+  border: 0;
+  background-color: transparent;
+  color: #4661e6;
+  font-weight: 600;
+}
+
+.user-reply button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+h3 ~ .comments:not(:last-of-type) {
+  border-bottom: 1px solid hsl(231, 20%, 63%, 0.25);
+  overflow: hidden;
+}
+
+.user-reply {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.user-details {
+  display: flex;
+  width: 26%;
+}
+
+.username {
+  margin-left: 32px;
+}
+
+.username h4 {
+  width: 103%;
+}
+
+.user-details img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.content {
+  margin-top: 17px;
+  margin-left: 70px;
+  margin-bottom: 32px;
+}
+
+.content span {
+  color: #ad1fea;
+  font-weight: 700;
+}
+
+.comments > .comments {
+  padding-left: 50px;
+  border-left: 0;
+  .main-comment {
+    border-bottom: none;
+  }
+}
+
+.main-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #8c92b3;
+}
+
+.add-comment-holder textarea {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px 24px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #8c92b3;
+  border: 0;
+  outline: 0;
+  background-color: #f7f8fd;
+  border-radius: 10px;
+}
+
+.add-comment-holder textarea:hover {
+  cursor: pointer;
+  outline: 1px solid #4661e6;
+}
+
+.comment-count {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.comment-count p {
+  color: #647196;
+}
+
+.comment-count button {
+  border: 0;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: #ffff;
+  background-color: #ad1fea;
+}
+
+.comment-count button:hover,
+.reply-box button:hover {
+  cursor: pointer;
+  background-color: #c75af6;
+}
+
+.comments:has(.comments)::after {
+  content: '';
+  width: 1px;
+  background-color: hsl(231, 20%, 63%, 0.25);
+  top: 95px;
+  bottom: 0;
+  left: 20px;
+  position: absolute;
+}
+
+.comments .comments:last-of-type .main-comment:last-of-type::before {
+  content: '';
+  width: 2px;
+  background-color: #ffff;
+  top: 20px;
+  // bottom: -100%;
+  bottom: 0;
+  left: 20px;
+  position: absolute;
+  z-index: 2;
+}
+
+.reply-box {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 82%;
+  align-self: center;
+}
+
+.reply-box textarea {
+  padding: 16px 24px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #8c92b3;
+  border: 0;
+  outline: 0;
+  background-color: #f7f8fd;
+  margin-bottom: 32px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.reply-box textarea:hover {
+  cursor: pointer;
+  outline: 1px solid #4661e6;
+}
+
+.reply-box button {
+  border: 0;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: white;
+  background-color: #ad1fea;
+  margin-left: 16px;
+  width: 25%;
 }
