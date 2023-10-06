@@ -36,7 +36,7 @@ export const data = {
       ],
     },
     {
-      id: 2,
+      id: 35,
       title: 'Add a dark theme option',
       category: 'feature',
       upvotes: 99,

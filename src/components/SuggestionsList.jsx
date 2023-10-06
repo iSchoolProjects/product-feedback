@@ -1,4 +1,4 @@
-import { data } from '../data';
+import { data } from './data';
 import Suggestion from './Suggestion';
 import React from 'react';
 

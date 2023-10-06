@@ -7,7 +7,6 @@ export default function CommentsHolder({
   isReplyOpen,
   parentId,
 }) {
-  console.log(parentId, comment.id);
   const generateId = [comment.id, parentId]
     .filter((ids) => ids !== undefined)
     .join(',');

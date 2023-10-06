@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 export default function Suggestion({ cardDetails = {} }) {
+  const navigate = useNavigate();
+  console.log(cardDetails);
   return (
     <>
-      <section>
+      <section onClick={() => navigate('/feedback/' + cardDetails.id)}>
         <div className="suggestion suggestion-width">
           <div className="left-side">
             <div className="click-num">

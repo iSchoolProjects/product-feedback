@@ -1,23 +1,34 @@
-import React, { useState } from 'react';
-import { data } from '../data';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import { data } from './data';
 import NewComment from './CommentCharacters';
 import CommentsHolder from './CommentsHolder';
 
-export default function SuggestionDetails({
-  detail = data.productRequests[1],
-}) {
+export default function SuggestionDetails() {
+  const [detail, setDetail] = useState({});
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [isReplyOpen, setIsReplyOpen] = useState();
 
   const handleClick = (currentReply) => {
     setIsReplyOpen(currentReply);
   };
+
+  useEffect(() => {
+    const detail = data.productRequests.find((item) => item.id === +id);
+    if (!detail && id) navigate('/');
+    setDetail(detail ?? {});
+  }, [id]);
+  console.log(id);
   return (
     <>
       <div className="details-section">
         <div className="navigation-feedback">
           <div className="navigation">
             <img src="../assets/shared/icon-arrow-left.svg" alt="" />
-            <a href="#">Go Back</a>
+            <a onClick={() => navigate('/')} href="#">
+              Go Back
+            </a>
           </div>
           <button>Edit Feedback</button>
         </div>
@@ -40,7 +51,7 @@ export default function SuggestionDetails({
         </div>
         <div className="comments-holder">
           <h3>{detail.comments?.length} Comments</h3>
-          {detail.comments.map((comment) => (
+          {detail.comments?.map((comment) => (
             <CommentsHolder
               comment={comment}
               handleClick={handleClick}
