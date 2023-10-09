@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Sidebar products={data.productRequests}></Sidebar>
-      <div style={{ width: '50%' }}>
+      <div>
         <SuggestionsList></SuggestionsList>
       </div>
     </>

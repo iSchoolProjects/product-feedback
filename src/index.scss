@@ -29,3 +29,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media screen and (max-width: 768px) {
+  div#root {
+    padding-inline: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  div#root {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  div#root {
+    flex-direction: row;
+  }
+}
