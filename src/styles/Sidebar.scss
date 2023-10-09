@@ -87,7 +87,6 @@ aside {
   }
   ul {
     margin-top: 20px;
-    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -167,6 +166,7 @@ aside {
     }
     ul {
       padding-left: 0;
+      margin-left: 20px;
     }
     .sidebar-header {
       border-radius: 10px;
