@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
-import { data } from './data';
-import NewComment from './CommentCharacters';
-import CommentsHolder from './CommentsHolder';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router";
+import { data } from "./data";
+import NewComment from "./CommentCharacters";
+import CommentsHolder from "./CommentsHolder";
+import { getFeedback } from "../api/api";
 
 export default function SuggestionDetails() {
   const [detail, setDetail] = useState({});
@@ -13,20 +14,23 @@ export default function SuggestionDetails() {
   const handleClick = (currentReply) => {
     setIsReplyOpen(currentReply);
   };
-
+  const getData = async () => {
+    const result = await getFeedback(id);
+    setDetail(result);
+  };
   useEffect(() => {
-    const detail = data.productRequests.find((item) => item.id === +id);
-    if (!detail && id) navigate('/');
+    getData();
+    // const detail = data.productRequests.find((item) => item.id === +id);
+    // if (!detail && id) navigate("/");
     setDetail(detail ?? {});
   }, [id]);
-  console.log(id);
   return (
     <>
       <div className="details-section">
         <div className="navigation-feedback">
           <div className="navigation">
             <img src="../assets/shared/icon-arrow-left.svg" alt="" />
-            <a onClick={() => navigate('/')} href="#">
+            <a onClick={() => navigate("/")} href="#">
               Go Back
             </a>
           </div>

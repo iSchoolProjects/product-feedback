@@ -1,5 +1,4 @@
-import React from 'react';
-import { data } from '../data';
+import React from "react";
 
 export default function CommentsHolder({
   comment,
@@ -9,7 +8,7 @@ export default function CommentsHolder({
 }) {
   const generateId = [comment.id, parentId]
     .filter((ids) => ids !== undefined)
-    .join(',');
+    .join(",");
   return (
     <>
       <div className="comments">
