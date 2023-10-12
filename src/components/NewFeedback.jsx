@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+const options = [
+  {
+    label: "Feature",
+    value: "Feature",
+  },
+
+  {
+    label: "UI",
+    value: "UI",
+  },
+
+  {
+    label: "UX",
+    value: "UX",
+  },
+
+  {
+    label: "Enhancement",
+    value: "Enhancement",
+  },
+
+  {
+    label: "Bug",
+    value: "Bug",
+  },
+];
 
 export default function NewFeedback() {
   const [state, setState] = useState({
@@ -11,8 +39,6 @@ export default function NewFeedback() {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleClick = () => {};
-
   const handleSubmit = () => {
     if (!state.title.length || !state.detail.length) {
       setState((prev) => ({ ...prev, error: true }));
@@ -24,10 +50,10 @@ export default function NewFeedback() {
   return (
     <>
       <div className="page-feedback">
-        <div className="card-feedback">
+        <div className="new-card">
           <div className="back-feedback">
             <img src="./assets/shared/icon-arrow-left.svg" alt="" />
-            <button>Go Back</button>
+            <Link to="/">Go Back</Link>
           </div>
           <div className="img-feedback">
             <img src="./assets/shared/icon-new-feedback.svg" alt="" />
@@ -41,12 +67,10 @@ export default function NewFeedback() {
           <div className="form">
             <h5>Category</h5>
             <p>Choose a category for your feedback</p>
-            <select onClick={handleClick} name="Feature" id="Feature">
-              <option value="Feature">Feature</option>
-              <option value="UL">UL</option>
-              <option value="UX">UX</option>
-              <option value="Enhancement">Enhancement</option>
-              <option value="Bug">Bug</option>
+            <select>
+              {options.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
             </select>
           </div>
           <div className="form">
@@ -64,9 +88,10 @@ export default function NewFeedback() {
             />
             {state.error && <h4>Can't be empty</h4>}
           </div>
-          <div className="feedback-btn">
-            <button className="cancel-btn">Cancel</button>
-            <button onClick={handleSubmit} className="add-btn">
+          <div className="card-bottom">
+            <Link to="/">Cancel</Link>
+
+            <button onClick={handleSubmit} className="add-save">
               Add Feedback
             </button>
           </div>

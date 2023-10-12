@@ -8,14 +8,17 @@
 }
 
 .back-feedback {
-  position: relative;
-  top: -130px;
-  right: 30px;
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-left: -2.5rem;
 }
 
-.back-feedback button {
+a {
+  text-decoration: none;
+}
+
+.back-feedback a {
   outline: none;
   border: 0;
   font-weight: 700;
@@ -24,23 +27,30 @@
   color: #647196;
 }
 
-.card-feedback {
+.new-card,
+.edit-card {
   display: flex;
   flex-direction: column;
   padding: 2.5rem;
   border-radius: 0.8rem;
-  background-color: #ffffff;
 }
 
-.img-feedback {
-  position: relative;
-  top: -80px;
+.new-card {
+  background: linear-gradient(180deg, transparent 16%, white 10%);
 }
 
-.card-feedback h2 {
-  margin: 0;
+.edit-card {
+  background: linear-gradient(180deg, transparent 14%, white 10%);
+}
+
+.img-feedback img {
+  width: 56px;
+}
+
+.new-card h2,
+.edit-card h2 {
   font-family: Jost, sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #3a4374;
 }
@@ -55,7 +65,7 @@
 .form h5 {
   margin: 0;
   padding-top: 0.5rem;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #3a4374;
 }
@@ -63,8 +73,10 @@
 .form p {
   margin: 0;
   padding-bottom: 0.5rem;
-  font-family: jost, sans-serif;
   color: #647196;
+  font-family: jost, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .form h4 {
@@ -75,8 +87,7 @@
 
 input,
 select {
-  width: 100%;
-  height: 48px;
+  padding: 1.5rem;
   outline: none;
   border: 0;
   border-radius: 0.5rem;
@@ -84,55 +95,156 @@ select {
 }
 
 select {
-  padding-inline: 1rem;
   cursor: pointer;
-}
-
-input:hover {
-  border: 1px solid #4661e6;
-}
-
-select:hover {
-  border: 1px solid #4661e6;
 }
 
 .detail-input {
-  height: 96px;
+  padding: 2.5rem;
 }
 
-.feedback-btn {
+.card-bottom button,
+a,
+.edit-bottom button {
+  padding: 1rem 2rem;
+  border-radius: 0.7rem;
+  border: 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: #f2f4fe;
+  cursor: pointer;
+}
+
+.card-bottom {
   display: flex;
   justify-content: end;
-  gap: 1rem;
+  gap: 30px;
+  margin-top: 1.8rem;
+}
+
+.card-bottom a,
+.cancel {
+  background-color: #3a4374;
+}
+
+.card-bottom a:hover,
+.cancel:hover {
+  background: #656ea3;
+}
+
+.edit-bottom {
+  display: flex;
+  gap: 100px;
   margin-top: 1.5rem;
 }
 
-.feedback-btn button {
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  border: 0;
-  font-weight: 700;
-  font-size: 16px;
-  color: #f2f4fe;
-  cursor: pointer;
+.edit-button {
+  display: flex;
+  gap: 1rem;
 }
 
 .delete-btn {
   background-color: #d73737;
 }
 
-.cancel-btn {
-  background-color: #3a4374;
-}
-
-.cancel-btn:hover {
-  background: #656ea3;
-}
-
-.add-btn {
+.add-save {
   background-color: #ad1fea;
 }
 
-.add-btn:hover {
+.add-save:hover {
   background-color: #c75af6;
+}
+
+.add-save:disabled {
+  background-color: #dc89ff;
+}
+
+@media only screen and (max-width: 768px) {
+  .new-card {
+    background: linear-gradient(180deg, transparent 14%, white 10%);
+  }
+
+  .edit-card {
+    background: linear-gradient(180deg, transparent 11%, white 10%);
+  }
+  .new-card,
+  .edit-card {
+    margin-bottom: 80px;
+
+    margin-inline: 20px;
+  }
+  .card-bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .detail-input {
+    padding: 3rem;
+  }
+
+  .edit-bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .edit-button {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-bottom a,
+  .cancel {
+    order: 2;
+  }
+
+  .delete-btn {
+    order: 3;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .new-card {
+    background: linear-gradient(180deg, transparent 16%, white 10%);
+  }
+
+  .edit-card {
+    background: linear-gradient(180deg, transparent 14%, white 10%);
+  }
+
+  .card-bottom {
+    display: flex;
+    flex-direction: row;
+  }
+
+  input,
+  select {
+    padding: 1rem;
+  }
+
+  .edit-bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  .edit-button {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .delete-btn {
+    order: 0;
+  }
+
+  .card-bottom a,
+  .cancel {
+    order: 1;
+  }
+
+  .add-save {
+    order: 3;
+  }
 }
