@@ -1,16 +1,10 @@
-import React, { createContext, useState } from "react";
+import React from "react";
 import SuggestionDetails from "./components/SuggestionDetails";
 import { Route, Routes } from "react-router";
-import "./App.css";
 import Home from "./components/Home";
-import { getFeedbacks } from "./api/api";
+import { Consumer } from "./App";
 
-// function App() {
-//   return <SuggestionDetails detail={data.productRequests[0]} />;
-// }
-
-export const Consumer = createContext();
-function App() {
+export function App() {
   const [feedbacks, setFeedbacks] = useState({ productRequests: [] });
   const [isLoading, setIsLoading] = useState(false);
   const getData = async () => {
@@ -48,5 +42,3 @@ function App() {
     </Consumer.Provider>
   );
 }
-
-export default App;

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { upvoteFeedback } from "../api/api";
+import { Consumer } from "../App";
 
-export default function Suggestion({ cardDetails = {}, updateSugestion }) {
+export default function Suggestion({ cardDetails = {} }) {
+  const { updateSugestion } = useContext(Consumer);
   const navigate = useNavigate();
   const handleUpvote = async (e) => {
     e.stopPropagation();

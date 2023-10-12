@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
 const max = 255;
-export default function NewComment(e) {
-  const [chars, setChars] = useState('');
+export default function NewComment({ postComment }) {
+  const [chars, setChars] = useState("");
+
   const updatedChars = ({ target: { value } }) => {
     setChars(value);
+  };
+
+  const handleClick = () => {
+    postComment(chars);
+    setChars("");
   };
 
   return (
@@ -15,10 +20,11 @@ export default function NewComment(e) {
         rows="4"
         onChange={updatedChars}
         placeholder="Type your comment here"
+        value={chars}
       ></textarea>
       <div className="comment-count">
         <p>{max - chars.length} characters left</p>
-        <button>Post comment</button>
+        <button onClick={handleClick}>Post comment</button>
       </div>
     </>
   );

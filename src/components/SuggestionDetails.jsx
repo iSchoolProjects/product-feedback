@@ -1,16 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router";
-import { data } from "./data";
 import NewComment from "./CommentCharacters";
 import CommentsHolder from "./CommentsHolder";
-import { getFeedback } from "../api/api";
+import { createReply, getFeedback, upvoteFeedback } from "../api/api";
+import { Consumer } from "../App";
+import { createComment } from "../api/api";
 
 export default function SuggestionDetails() {
+  const { updateSugestion } = useContext(Consumer);
   const [detail, setDetail] = useState({});
+
   const navigate = useNavigate();
   const { id } = useParams();
   const [isReplyOpen, setIsReplyOpen] = useState();
 
+  const postComment = async (comment) => {
+    if (id) {
+      const newComment = await createComment(id, comment);
+      setDetail(newComment);
+    }
+  };
+  const postReply = async (parent, comment) => {
+    if (id) {
+      const reply = await createReply(id, parent, comment);
+      setDetail(reply);
+    }
+  };
   const handleClick = (currentReply) => {
     setIsReplyOpen(currentReply);
   };
@@ -24,6 +39,14 @@ export default function SuggestionDetails() {
     // if (!detail && id) navigate("/");
     setDetail(detail ?? {});
   }, [id]);
+
+  const handleUpvote = async (e) => {
+    e.stopPropagation();
+    const data = await upvoteFeedback(id);
+    setDetail(data);
+    updateSugestion(data);
+  };
+
   return (
     <>
       <div className="details-section">
@@ -37,7 +60,7 @@ export default function SuggestionDetails() {
           <button>Edit Feedback</button>
         </div>
         <div className="suggestion">
-          <div className="left-side">
+          <div className="left-side" onClick={handleUpvote}>
             <div className="click-num">
               <img src="../assets/shared/icon-arrow-up.svg" alt="" />
               <h5> {detail.upvotes}</h5>
@@ -60,11 +83,12 @@ export default function SuggestionDetails() {
               comment={comment}
               handleClick={handleClick}
               isReplyOpen={isReplyOpen}
+              postReply={postReply}
             />
           ))}
         </div>
         <div className="add-comment-holder">
-          <NewComment></NewComment>
+          <NewComment id={id} postComment={postComment} />
         </div>
       </div>
     </>
