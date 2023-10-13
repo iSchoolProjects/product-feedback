@@ -3,9 +3,8 @@ import { Route, Routes } from "react-router";
 import EditFeedback from "./components/EditFeedback";
 import NewFeedback from "./components/NewFeedback";
 import SuggestionsList from "./components/SuggestionsList";
-import React from "react";
 import SuggestionDetails from "./components/SuggestionDetails";
-import { Route, Routes } from "react-router";
+
 import "./App.css";
 import Home from "./components/Home";
 
