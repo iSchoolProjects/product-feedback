@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
+import Roadmap from './components/Roadmap';
+import { data } from './data';
 
 function App() {
   return (
@@ -11,11 +13,11 @@ function App() {
         path="/edit-feedback/:id"
         Component={() => <h1>EditFeedback</h1>}
       />
-      <Route path="/roadmap" Component={() => <h1>Roadmap</h1>} />
+      <Route path="/roadmap" Component={Roadmap} />
     </Routes>
   );
 }
 
 export default App;
 
-//useRoutes ?
+
