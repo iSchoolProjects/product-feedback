@@ -7,10 +7,13 @@ export default function CommentsHolder({
   parentId,
   postReply,
 }) {
-  const [reply, setReply] = useState();
+  const [reply, setReply] = useState("");
   const handleClicks = () => {
-    postReply(parentId || comment.id, reply);
-    setReply("");
+    if (reply.trim().length) {
+      postReply(parentId || comment.id, reply);
+      setReply("");
+      handleClick();
+    }
   };
   const updatedReply = ({ target: { value } }) => {
     setReply(value);
@@ -18,6 +21,7 @@ export default function CommentsHolder({
   const generateId = [comment.id, parentId]
     .filter((ids) => ids !== undefined)
     .join(",");
+  console.log(comment.id, parentId);
   return (
     <>
       <div className="comments">
@@ -42,7 +46,7 @@ export default function CommentsHolder({
                 onChange={updatedReply}
                 value={reply}
               ></textarea>
-              <button onClick={() => handleClick()}>Post reply</button>
+              <button onClick={() => handleClicks()}>Post reply</button>
             </div>
           )}
         </div>
