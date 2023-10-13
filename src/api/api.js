@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 const api = axios.create({
-    baseURL: 'http://zlaja.live:3006',
+    baseURL: 'https://zlaja.live:3006',
 });
 export const getFeedbacks = async () => {
     try {
