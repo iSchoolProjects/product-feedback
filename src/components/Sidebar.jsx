@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Buttons from './Buttons';
+import React, { useState, useEffect } from "react";
+import Buttons from "./Buttons";
 
 export default function Sidebar({ products, label, status }) {
   const [filters, setFilter] = useState([]);
   const [item, setItem] = useState();
-  const getByStatus = () => {
+  const getByStatus = (products) => {
     const newObject = {};
     for (const current of products) {
       if (newObject[current.status]) {
@@ -16,7 +16,7 @@ export default function Sidebar({ products, label, status }) {
     setItem(newObject);
   };
   useEffect(() => {
-    getByStatus();
+    getByStatus(products);
   }, []);
   const handleClick = (pill) => {
     let filteredData = [...filters];
@@ -25,7 +25,7 @@ export default function Sidebar({ products, label, status }) {
     } else {
       filteredData.push(pill);
     }
-    if (pill === 'All') filteredData = [];
+    if (pill === "All") filteredData = [];
     if (filteredData.length === pills.length - 1) filteredData = [];
     setFilter(filteredData);
   };
@@ -36,7 +36,7 @@ export default function Sidebar({ products, label, status }) {
   // nakon tih provjera, setuje filter state na nove vrijednosti
   //ptreban nam je state, prazan niz je pocetna vr
 
-  const pills = ['All', 'UI', 'UX', 'Enchancement', 'Bug', 'Feature'];
+  const pills = ["All", "UI", "UX", "Enchancement", "Bug", "Feature"];
   return (
     <>
       <aside className="d-none d-md-flex">
@@ -96,7 +96,7 @@ export default function Sidebar({ products, label, status }) {
               aria-labelledby="offcanvasNavbarLabel"
             >
               <div className="offcanvas-body">
-                {' '}
+                {" "}
                 <aside>
                   <Buttons
                     label={label}

@@ -49,7 +49,7 @@ export const createComment = async (id, body) => {
 }
 export const createReply = async (id, comment, body) => {
     try {
-        const { data } = await api.post(`/feedbacks/${id}comments/${comment}/reply`, { data: body });
+        const { data } = await api.post(`/feedbacks/${id}/comments/${comment}/reply`, { data: body });
         return data;
     } catch (error) { }
 }

@@ -1,11 +1,12 @@
-import { data } from './data';
-import Suggestion from './Suggestion';
-import React from 'react';
+import { Consumer } from "../App";
+import Suggestion from "./Suggestion";
+import React, { useContext } from "react";
 
-export default function SuggestionsList({ list = data.productRequests }) {
+export default function SuggestionsList() {
+  const { feedbacks } = useContext(Consumer);
   return (
     <>
-      {list.map((item) => (
+      {feedbacks.productRequests.map((item) => (
         <Suggestion cardDetails={item} />
       ))}
     </>

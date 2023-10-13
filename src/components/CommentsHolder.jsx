@@ -1,15 +1,27 @@
-import React from 'react';
-import { data } from '../data';
+import React, { useState } from "react";
 
 export default function CommentsHolder({
   comment,
   handleClick,
   isReplyOpen,
   parentId,
+  postReply,
 }) {
+  const [reply, setReply] = useState("");
+  const handleClicks = () => {
+    if (reply.trim().length) {
+      postReply(parentId || comment.id, reply);
+      setReply("");
+      handleClick();
+    }
+  };
+  const updatedReply = ({ target: { value } }) => {
+    setReply(value);
+  };
   const generateId = [comment.id, parentId]
     .filter((ids) => ids !== undefined)
-    .join(',');
+    .join(",");
+  console.log(comment.id, parentId);
   return (
     <>
       <div className="comments">
@@ -31,8 +43,10 @@ export default function CommentsHolder({
                 maxLength={255}
                 rows="4"
                 placeholder="Type your comment here"
+                onChange={updatedReply}
+                value={reply}
               ></textarea>
-              <button onClick={() => handleClick(undefined)}>Post reply</button>
+              <button onClick={() => handleClicks()}>Post reply</button>
             </div>
           )}
         </div>
@@ -42,6 +56,7 @@ export default function CommentsHolder({
             handleClick={handleClick}
             isReplyOpen={isReplyOpen}
             parentId={comment.id}
+            postReply={postReply}
           />
         ))}
       </div>

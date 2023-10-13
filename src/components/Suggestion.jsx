@@ -1,15 +1,22 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
+import React, { useContext } from "react";
+import { useNavigate } from "react-router";
+import { upvoteFeedback } from "../api/api";
+import { Consumer } from "../App";
 
 export default function Suggestion({ cardDetails = {} }) {
+  const { updateSugestion } = useContext(Consumer);
   const navigate = useNavigate();
-  console.log(cardDetails);
+  const handleUpvote = async (e) => {
+    e.stopPropagation();
+    const data = await upvoteFeedback(cardDetails.id);
+    updateSugestion(data);
+  };
   return (
     <>
-      <section onClick={() => navigate('/feedback/' + cardDetails.id)}>
+      <section onClick={() => navigate("/feedback/" + cardDetails.id)}>
         <div className="suggestion suggestion-width">
           <div className="left-side">
-            <div className="click-num">
+            <div className="click-num" onClick={handleUpvote}>
               <img src="./assets/shared/icon-arrow-up.svg" alt="" />
               <h5> {cardDetails.upvotes}</h5>
             </div>
