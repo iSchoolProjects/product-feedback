@@ -2,6 +2,14 @@
   display: grid;
   grid-auto-flow: column;
   overflow-x: auto;
+
+  ::-webkit-scrollbar {
+    background-color: hsl(231, 20%, 63%, 0.1);
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(231, 20%, 63%, 0.25);
+  }
   @media (max-width: 390px) {
     display: flex;
     flex-direction: column;
@@ -130,34 +138,25 @@
 }
 
 .navigation {
+  display: none;
   @media (max-width: 390px) {
     display: grid;
     overflow-x: scroll;
     overflow-y: hidden;
     width: 100%;
-
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-    // border-bottom: 1px solid hsl(231, 20%, 63%);
+    border-bottom: 1px solid hsl(231, 20%, 63%);
 
     button {
       border: 0;
       outline: 0;
-      background-color: transparent;
-      font-size: 19px;
+      background-color: #f7f8fd;
+      font-size: 16px;
       color: hsl(231, 33%, 34%, 0.4);
       font-weight: 700;
       text-transform: capitalize;
-      padding: 20px;
-      // width: fit-content;
-    }
-    ::-webkit-scrollbar {
-      background-color: #8c92b3;
-      height: 1px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: hsl(231, 20%, 63%);
-      height: 1px;
+      padding: 25px 12px;
     }
 
     .active-tab {
@@ -169,7 +168,7 @@
       width: 125px;
       height: 4px;
       display: flex;
-      transform: translateY(10px);
+      transform: translateY(25px);
     }
     .suggestion::after {
       background-color: #4661e6;
