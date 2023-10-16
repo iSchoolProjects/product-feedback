@@ -1,0 +1,186 @@
+.roadmap-holder {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+
+  ::-webkit-scrollbar {
+    background-color: hsl(231, 20%, 63%, 0.1);
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(231, 20%, 63%, 0.25);
+  }
+  @media (max-width: 390px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-container {
+    padding: 2rem;
+    background-color: #f7f8fd;
+
+    @media (min-width: 391px) and (max-width: 820px) {
+      width: 275px;
+    }
+  }
+
+  .card {
+    background-color: white;
+    padding: 1rem;
+    border-top: 6px solid #f49f85;
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 1rem;
+
+    &.suggestion {
+      border-color: #4661e6;
+    }
+
+    &.in-progress {
+      border-color: #ad1fea;
+    }
+
+    &.live {
+      border-color: #62bcfa;
+    }
+
+    .planned {
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #f49f85;
+      margin-right: 8px;
+
+      &.suggestion {
+        background-color: #4661e6;
+      }
+      &.in-progress {
+        background-color: #ad1fea;
+      }
+
+      &.live {
+        background-color: #62bcfa;
+      }
+    }
+  }
+  .plans {
+    display: flex;
+    align-items: center;
+    color: #647196;
+  }
+
+  .info h3 {
+    color: #3a4374;
+    margin-bottom: 6px;
+    margin-top: 6px;
+  }
+  .info p {
+    color: #647196;
+    margin-bottom: 6px;
+  }
+  .card button {
+    color: #4661e6;
+    font-family: Jost;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .impressions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .impressions img {
+    margin-top: 5px;
+    width: 14px;
+    height: 12px;
+  }
+  .upvotes {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    background-color: #f2f4fe;
+
+    border-radius: 5px;
+  }
+  .comments {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+  }
+
+  .feature button {
+    text-transform: capitalize;
+    background-color: #f2f4ff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 12px 12px 12px;
+  }
+  .plans {
+    text-transform: capitalize;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .schedule h2 {
+    text-transform: capitalize;
+    margin-bottom: 6px;
+  }
+
+  .schedule p {
+    text-transform: capitalize;
+    margin-bottom: 12px;
+  }
+}
+
+.navigation {
+  display: none;
+  @media (max-width: 390px) {
+    display: grid;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    border-bottom: 1px solid hsl(231, 20%, 63%);
+
+    button {
+      border: 0;
+      outline: 0;
+      background-color: #f7f8fd;
+      font-size: 16px;
+      color: hsl(231, 33%, 34%, 0.4);
+      font-weight: 700;
+      text-transform: capitalize;
+      padding: 25px 12px;
+    }
+
+    .active-tab {
+      color: #3a4374;
+    }
+
+    .active-tab::after {
+      content: '';
+      width: 125px;
+      height: 4px;
+      display: flex;
+      transform: translateY(25px);
+    }
+    .suggestion::after {
+      background-color: #4661e6;
+    }
+    .planned::after {
+      background-color: #f49f85;
+    }
+    .in-progress::after {
+      background-color: #ad1fea;
+    }
+    .live::after {
+      background-color: #62bcfa;
+    }
+  }
+}
