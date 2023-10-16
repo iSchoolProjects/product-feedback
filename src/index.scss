@@ -2,7 +2,7 @@
 @import url('./styles/Sidebar.scss');
 @import url('./styles/SuggestionsList.scss');
 @import url('./styles/SuggestionDetails.scss');
-
+@import url('./styles/Roadmap.scss');
 * {
   padding: 0;
   margin: 0;
@@ -47,7 +47,6 @@ code {
     flex-direction: row;
   }
 }
-@import url('./styles/Roadmap.scss');
 
 * {
   padding: 0;
