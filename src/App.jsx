@@ -1,12 +1,12 @@
-import React, { createContext, useState } from 'react';
-import SuggestionDetails from './components/SuggestionDetails';
-import { Route, Routes } from 'react-router';
-import Home from './components/Home';
-import { getFeedbacks } from './api/api';
-import EditFeedback from './components/EditFeedback';
-import NewFeedback from './components/NewFeedback';
-import Roadmap from './components/Roadmap';
-import './App.css';
+import React, { createContext, useState } from "react";
+import SuggestionDetails from "./components/SuggestionDetails";
+import { Route, Routes } from "react-router";
+import Home from "./components/Home";
+import { getFeedbacks } from "./api/api";
+import EditFeedback from "./components/EditFeedback";
+import NewFeedback from "./components/NewFeedback";
+import Roadmap from "./components/Roadmap";
+import "./App.css";
 
 // function App() {
 //   return <SuggestionDetails detail={data.productRequests[0]} />;
