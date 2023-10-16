@@ -1,3 +1,52 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import url('./styles/Sidebar.scss');
+@import url('./styles/SuggestionsList.scss');
+@import url('./styles/SuggestionDetails.scss');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f7f8fd;
+}
+
+div#root {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media screen and (max-width: 768px) {
+  div#root {
+    padding-inline: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  div#root {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  div#root {
+    flex-direction: row;
+  }
+}
 @import url('./styles/Roadmap.scss');
 
 * {
