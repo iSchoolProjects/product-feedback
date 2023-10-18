@@ -1,4 +1,3 @@
-
 import React, { createContext, useState } from "react";
 import SuggestionDetails from "./components/SuggestionDetails";
 import { Route, Routes, useNavigate } from "react-router";
@@ -6,7 +5,6 @@ import Home from "./components/Home";
 import { getFeedbacks } from "./api/api";
 import EditFeedback from "./components/EditFeedback";
 import NewFeedback from "./components/NewFeedback";
-import "./App.css";
 import ErrorMessage from "./components/ErrorMessage";
 import Roadmap from "./components/Roadmap";
 

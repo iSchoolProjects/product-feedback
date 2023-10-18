@@ -99,8 +99,7 @@
   }
   .new-card {
     .card-bottom button,
-    a,
-    .edit-bottom button {
+    a {
       padding: 1rem 2rem;
       border-radius: 0.7rem;
       border: 0;
@@ -129,10 +128,18 @@
 
   .edit-bottom {
     display: flex;
-    gap: 100px;
+    justify-content: space-between;
     margin-top: 1.5rem;
   }
-
+  .edit-bottom button {
+    padding: 1rem 2rem;
+    border-radius: 0.7rem;
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: #f2f4fe;
+    cursor: pointer;
+  }
   .edit-button {
     display: flex;
     gap: 1rem;
