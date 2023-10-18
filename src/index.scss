@@ -4,6 +4,7 @@
 @import url('./styles/SuggestionDetails.scss');
 @import url('./styles/Roadmap.scss');
 @import url('./styles/Feedback.scss');
+@import url('./styles/NoFeedbackPage.scss');
 * {
   padding: 0;
   margin: 0;
@@ -22,8 +23,8 @@ body {
 
 div#root {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  width: 60%;
+  margin: auto;
 }
 
 code {
