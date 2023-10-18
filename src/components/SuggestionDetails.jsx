@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router";
-import NewComment from "./CommentCharacters";
-import CommentsHolder from "./CommentsHolder";
-import { createReply, getFeedback, upvoteFeedback } from "../api/api";
-import { Consumer } from "../App";
-import { createComment } from "../api/api";
-
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import NewComment from './CommentCharacters';
+import CommentsHolder from './CommentsHolder';
+import { createReply, getFeedback, upvoteFeedback } from '../api/api';
+import { Consumer } from '../App';
+import { createComment } from '../api/api';
+import { NavLink } from 'react-router-dom';
 export default function SuggestionDetails() {
   const { updateSugestion } = useContext(Consumer);
   const [detail, setDetail] = useState({});
@@ -16,21 +16,26 @@ export default function SuggestionDetails() {
 
   const postComment = async (comment) => {
     if (id) {
-      const newComment = await createComment(id, comment);
+      const newComment = await createComment(id, comment, () =>
+        navigate("/error")
+      );
       setDetail(newComment);
     }
   };
   const postReply = async (parent, comment) => {
     if (id) {
-      const reply = await createReply(id, parent, comment);
+      const reply = await createReply(id, parent, comment, () =>
+        navigate("/error")
+      );
       setDetail(reply);
     }
   };
+
   const handleClick = (currentReply) => {
     setIsReplyOpen(currentReply);
   };
   const getData = async () => {
-    const result = await getFeedback(id);
+    const result = await getFeedback(id, () => navigate("/error"));
     setDetail(result);
   };
   useEffect(() => {
@@ -42,7 +47,7 @@ export default function SuggestionDetails() {
 
   const handleUpvote = async (e) => {
     e.stopPropagation();
-    const data = await upvoteFeedback(id);
+    const data = await upvoteFeedback(id, () => navigate("/error"));
     setDetail(data);
     updateSugestion(data);
   };
@@ -53,11 +58,13 @@ export default function SuggestionDetails() {
         <div className="navigation-feedback">
           <div className="navigation">
             <img src="../assets/shared/icon-arrow-left.svg" alt="" />
-            <a onClick={() => navigate("/")} href="#">
+            <a onClick={() => navigate('/')} href="#">
               Go Back
             </a>
           </div>
-          <button>Edit Feedback</button>
+          <button>
+            <NavLink to={`/edit-feedback/${id}`}>Edit Feedback</NavLink>
+          </button>
         </div>
         <div className="suggestion">
           <div className="left-side" onClick={handleUpvote}>

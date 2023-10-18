@@ -1,0 +1,16 @@
+.errorBox {
+  width: 80%;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  h2 {
+    color: #4661e6;
+    text-align: center;
+    background-color: transparent;
+  }
+}
