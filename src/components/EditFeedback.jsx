@@ -1,85 +1,104 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deleteFeedback, editFeedback, getFeedback } from "../api/api";
 
 const options = [
   {
     label: "Feature",
-    value: "Feature",
+    value: "feature",
   },
 
   {
     label: "UI",
-    value: "UI",
+    value: "ui",
   },
 
   {
     label: "UX",
-    value: "UX",
+    value: "ux",
   },
 
   {
     label: "Enhancement",
-    value: "Enhancement",
+    value: "enhancement",
   },
 
   {
     label: "Bug",
-    value: "Bug",
+    value: "bug",
   },
 ];
 
 const select = [
   {
     label: "Suggestion",
-    value: "Suggestion",
+    value: "suggestion",
   },
 
   {
     label: "Planned",
-    value: "Planned",
+    value: "planned",
   },
 
   {
     label: "In-Progress",
-    value: "In-Progress",
+    value: "in-Progress",
   },
 
   {
     label: "Live",
-    value: "Live",
+    value: "live",
   },
 ];
 
 export default function EditFeedback() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   const [state, setState] = useState({
     title: "",
-    detail: "",
-    disabled: true,
+    description: "",
+    category: "",
+    status: "",
   });
-
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
   const handleChange = (e) => {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  const getData = async () => {
+    const result = await getFeedback(id);
+    setState(result);
+  };
   useEffect(() => {
-    if (!state.title.length || !state.detail.length) {
-      setState((prev) => ({ ...prev, disabled: true }));
-    } else {
-      setState((prev) => ({ ...prev, disabled: false }));
-    }
-  }, [state.detail, state.title]);
+    // if (!state.title.length || !state.detail.length) {
+    //   setState((prev) => ({ ...prev, disabled: true }));
+    // } else {
+    //   setState((prev) => ({ ...prev, disabled: false }));
+    // }
+    getData();
+  }, [id]);
 
-  const handleDelete = () => {};
+  const handleDelete = async () => {
+    const result = await deleteFeedback(id);
+    setState(result);
+    navigate("/");
+  };
 
-  const handleSubmit = () => {};
-
+  const handleSubmit = async () => {
+    await editFeedback(id, state);
+    navigate("/feedback/" + id);
+  };
+  console.log(state);
   return (
     <>
       <div className="page-feedback">
         <div className="edit-card">
           <div className="back-feedback">
             <img src="/assets/shared/icon-arrow-left.svg" alt="" />
-            <Link to="/feedback/:id">Go Back</Link>
+            <a onClick={handleBack}>Go Back</a>
           </div>
           <div className="img-feedback">
             <img src="/assets/shared/icon-edit-feedback.svg" alt="" />
@@ -94,12 +113,17 @@ export default function EditFeedback() {
               type="text"
               id="name"
               name="title"
+              value={state.title}
             />
           </div>
           <div className="form">
             <h5>Category</h5>
             <p>Choose a category for your feedback</p>
-            <select>
+            <select
+              value={state.category}
+              name="category"
+              onChange={handleChange}
+            >
               {options.map((option) => (
                 <option value={option.value}>{option.label}</option>
               ))}
@@ -108,9 +132,9 @@ export default function EditFeedback() {
           <div className="form">
             <h5>Update Status</h5>
             <p>Change feedback state</p>
-            <select>
-              {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
+            <select value={state.status} name="status" onChange={handleChange}>
+              {select.map((select) => (
+                <option value={select.value}>{select.label}</option>
               ))}
             </select>
           </div>
@@ -120,13 +144,17 @@ export default function EditFeedback() {
               Include any specific comments on what should be
               improved,added,etc.
             </p>
-            <input
+
+            <textarea
               onChange={handleChange}
               placeholder="It would help people with light sensitivities and who prefer dark mode."
               type="text"
               id="name"
-              name="detail"
+              name="description"
               className="detail-input"
+              cols={10}
+              rows={5}
+              value={state.description}
             />
           </div>
           <div className="edit-bottom">
@@ -134,8 +162,6 @@ export default function EditFeedback() {
               Delete
             </button>
             <div className="edit-button ">
-              <button className="cancel">Cancel</button>
-
               <button
                 onClick={handleSubmit}
                 disabled={state.disabled}

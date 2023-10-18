@@ -90,6 +90,10 @@
     border-radius: 10px;
     background-color: #4661e6;
     color: #ffff;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 
   .navigation-feedback button:hover {
@@ -99,9 +103,10 @@
 
   .navigation a {
     text-decoration: none;
-    margin-left: 15px;
-    color: #647196;
+    margin-left: 10px;
+    color: #647196 !important;
     font-weight: 700;
+    cursor: pointer;
   }
 
   .comments-holder {
