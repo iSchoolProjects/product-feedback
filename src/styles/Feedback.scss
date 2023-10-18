@@ -5,203 +5,36 @@
   align-items: center;
   min-height: 100vh;
   background-color: #f7f8fd;
-}
 
-.back-feedback {
-  display: flex;
-  align-items: center;
-  padding-bottom: 1rem;
-  margin-left: -2.5rem;
-}
-
-a {
-  text-decoration: none;
-}
-
-.back-feedback a {
-  outline: none;
-  border: 0;
-  font-weight: 700;
-  font-size: 14px;
-  background-color: #f7f8fd;
-  color: #647196;
-}
-
-.new-card,
-.edit-card {
-  display: flex;
-  flex-direction: column;
-  padding: 2.5rem;
-  border-radius: 0.8rem;
-}
-
-.new-card {
-  background: linear-gradient(180deg, transparent 16%, white 10%);
-}
-
-.edit-card {
-  background: linear-gradient(180deg, transparent 14%, white 10%);
-}
-
-.img-feedback img {
-  width: 56px;
-}
-
-.new-card h2,
-.edit-card h2 {
-  font-family: Jost, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: #3a4374;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.form h5 {
-  margin: 0;
-  padding-top: 0.5rem;
-  font-size: 14px;
-  font-weight: 700;
-  color: #3a4374;
-}
-
-.form p {
-  margin: 0;
-  padding-bottom: 0.5rem;
-  color: #647196;
-  font-family: jost, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.form h4 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #d73737;
-}
-
-input,
-select {
-  padding: 1.5rem;
-  outline: none;
-  border: 0;
-  border-radius: 0.5rem;
-  background-color: #f7f8fd;
-}
-
-select {
-  cursor: pointer;
-}
-
-.card-bottom button,
-a,
-.edit-bottom button {
-  padding: 1rem 2rem;
-  border-radius: 0.7rem;
-  border: 0;
-  font-weight: 700;
-  font-size: 14px;
-  color: #f2f4fe;
-  cursor: pointer;
-}
-
-.card-bottom {
-  display: flex;
-  justify-content: end;
-  gap: 30px;
-  margin-top: 1.8rem;
-}
-
-.card-bottom a,
-.cancel {
-  background-color: #3a4374;
-}
-
-.card-bottom a:hover,
-.cancel:hover {
-  background: #656ea3;
-}
-
-.edit-bottom {
-  display: flex;
-  gap: 100px;
-  margin-top: 1.5rem;
-}
-
-.edit-button {
-  display: flex;
-  gap: 1rem;
-}
-
-.delete-btn {
-  background-color: #d73737;
-}
-
-.add-save {
-  background-color: #ad1fea;
-}
-
-.add-save:hover {
-  background-color: #c75af6;
-}
-
-.add-save:disabled {
-  background-color: #dc89ff;
-}
-
-@media only screen and (max-width: 768px) {
-  .new-card {
-    background: linear-gradient(180deg, transparent 14%, white 10%);
+  .back-feedback {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-left: -2.5rem;
   }
 
-  .edit-card {
-    background: linear-gradient(180deg, transparent 11%, white 10%);
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
+
+  .back-feedback a {
+    outline: none;
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #f7f8fd;
+    color: #647196;
+  }
+
   .new-card,
   .edit-card {
-    margin-bottom: 80px;
-
-    margin-inline: 20px;
-  }
-  .card-bottom {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    padding: 2.5rem;
+    border-radius: 0.8rem;
   }
 
-  .detail-input {
-    padding: 3rem;
-  }
-
-  .edit-bottom {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .edit-button {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-bottom a,
-  .cancel {
-    order: 2;
-  }
-
-  .delete-btn {
-    order: 3;
-  }
-}
-
-@media only screen and (min-width: 768px) {
   .new-card {
     background: linear-gradient(180deg, transparent 16%, white 10%);
   }
@@ -210,37 +43,204 @@ a,
     background: linear-gradient(180deg, transparent 14%, white 10%);
   }
 
-  .card-bottom {
+  .img-feedback img {
+    width: 56px;
+  }
+
+  .new-card h2,
+  .edit-card h2 {
+    font-family: Jost, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3a4374;
+  }
+
+  .form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .form h5 {
+    margin: 0;
+    padding-top: 0.5rem;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3a4374;
+  }
+
+  .form p {
+    margin: 0;
+    padding-bottom: 0.5rem;
+    color: #647196;
+    font-family: jost, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .form h4 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #d73737;
   }
 
   input,
   select {
-    padding: 1rem;
+    padding: 1.5rem;
+    outline: none;
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: #f7f8fd;
   }
 
-  .edit-bottom {
+  select {
+    cursor: pointer;
+  }
+  .new-card {
+    .card-bottom button,
+    a,
+    .edit-bottom button {
+      padding: 1rem 2rem;
+      border-radius: 0.7rem;
+      border: 0;
+      font-weight: 700;
+      font-size: 14px;
+      color: #f2f4fe;
+      cursor: pointer;
+    }
+  }
+  .card-bottom {
     display: flex;
-    flex-direction: row;
-    gap: 100px;
-  }
-
-  .edit-button {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .delete-btn {
-    order: 0;
+    justify-content: end;
+    gap: 30px;
+    margin-top: 1.8rem;
   }
 
   .card-bottom a,
   .cancel {
-    order: 1;
+    background-color: #3a4374;
+  }
+
+  .card-bottom a:hover,
+  .cancel:hover {
+    background: #656ea3;
+  }
+
+  .edit-bottom {
+    display: flex;
+    gap: 100px;
+    margin-top: 1.5rem;
+  }
+
+  .edit-button {
+    display: flex;
+    gap: 1rem;
+  }
+  .delete-btn {
+    background-color: #d73737;
   }
 
   .add-save {
-    order: 3;
+    background-color: #ad1fea;
+  }
+
+  .add-save:hover {
+    background-color: #c75af6;
+  }
+
+  .add-save:disabled {
+    background-color: #dc89ff;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .new-card {
+      background: linear-gradient(180deg, transparent 14%, white 10%);
+    }
+
+    .edit-card {
+      background: linear-gradient(180deg, transparent 11%, white 10%);
+    }
+    .new-card,
+    .edit-card {
+      margin-bottom: 80px;
+
+      margin-inline: 20px;
+    }
+    .card-bottom {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .detail-input {
+      padding: 3rem;
+    }
+
+    .edit-bottom {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .edit-button {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-bottom a,
+    .cancel {
+      order: 2;
+    }
+
+    .delete-btn {
+      order: 3;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .new-card {
+      background: linear-gradient(180deg, transparent 16%, white 10%);
+    }
+
+    .edit-card {
+      background: linear-gradient(180deg, transparent 14%, white 10%);
+    }
+
+    .card-bottom {
+      display: flex;
+      flex-direction: row;
+    }
+
+    input,
+    select {
+      padding: 1rem;
+    }
+
+    .edit-bottom {
+      display: flex;
+      flex-direction: row;
+      gap: 100px;
+    }
+
+    .edit-button {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .delete-btn {
+      order: 0;
+    }
+
+    .card-bottom a,
+    .cancel {
+      order: 1;
+    }
+
+    .add-save {
+      order: 3;
+    }
   }
 }
