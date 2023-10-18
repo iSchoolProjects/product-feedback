@@ -5,6 +5,7 @@ import Home from './components/Home';
 import { getFeedbacks } from './api/api';
 import EditFeedback from './components/EditFeedback';
 import NewFeedback from './components/NewFeedback';
+import Roadmap from './components/Roadmap';
 import './App.css';
 
 // function App() {
@@ -57,7 +58,7 @@ function App() {
         <Route path="/new-feedback" Component={NewFeedback} />
         <Route path="/edit-feedback/:id" Component={EditFeedback} />
 
-        <Route path="/roadmap" Component={() => <h1>Roadmap</h1>} />
+        <Route path="/roadmap" Component={Roadmap} />
       </Routes>
     </Consumer.Provider>
   );

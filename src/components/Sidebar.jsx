@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Buttons from './Buttons';
 
+import { NavLink } from 'react-router-dom';
 export default function Sidebar({ products, label, status, filterSuggestion }) {
   const [filters, setFilter] = useState([]);
   const [item, setItem] = useState();
@@ -38,7 +39,6 @@ export default function Sidebar({ products, label, status, filterSuggestion }) {
   //ptreban nam je state, prazan niz je pocetna vr
 
   const pills = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
-
   return (
     <>
       <aside className="d-none d-md-flex">
@@ -55,8 +55,12 @@ export default function Sidebar({ products, label, status, filterSuggestion }) {
         <div className="road-map">
           <div className="title">
             <h4>Roadmap</h4>
-            <p>View</p>
+            <p>
+              <NavLink to={'/roadmap'}>View</NavLink>
+            </p>
+
             {/* link */}
+            {/* nav link react router-a (najobinic jsx komp) */}
           </div>
           <ul>
             {Object.entries(item ?? {}).map(([name, count]) => (
@@ -109,8 +113,9 @@ export default function Sidebar({ products, label, status, filterSuggestion }) {
                   <div className="road-map">
                     <div className="title">
                       <h4>Roadmap</h4>
-                      <p>View</p>
-                      {/* link */}
+                      <p>
+                        <NavLink to={'/roadmap'}>View</NavLink>
+                      </p>
                     </div>
                     <ul>
                       {Object.entries(item ?? {}).map(([name, count]) => (

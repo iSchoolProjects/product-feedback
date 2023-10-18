@@ -1,8 +1,9 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import url("./styles/Sidebar.scss");
-@import url("./styles/SuggestionsList.scss");
-@import url("./styles/SuggestionDetails.scss");
-
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import url('./styles/Sidebar.scss');
+@import url('./styles/SuggestionsList.scss');
+@import url('./styles/SuggestionDetails.scss');
+@import url('./styles/Roadmap.scss');
+@import url('./styles/Feedback.scss');
 * {
   padding: 0;
   margin: 0;
@@ -11,8 +12,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,7 +27,7 @@ div#root {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -46,4 +47,24 @@ code {
   div#root {
     flex-direction: row;
   }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
