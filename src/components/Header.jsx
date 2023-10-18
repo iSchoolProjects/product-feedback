@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Consumer } from "../App";
 
 const options = [
   {
@@ -24,7 +25,10 @@ const options = [
 ];
 
 export default function Header() {
-  const handleChange = (e) => {};
+  const { feedbacks, setOrder } = useContext(Consumer);
+  const handleSort = (e) => {
+    setOrder(e.target.value);
+  };
 
   return (
     <>
@@ -32,13 +36,13 @@ export default function Header() {
         <div className="suggestion-left">
           <div className="suggestion-number">
             <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
-            <h6>0</h6>
+            <h6>{feedbacks.productRequests.length}</h6>
             <h5>Suggestions</h5>
           </div>
 
           <div className="sort">
             <label for="upvotes">Sort by:</label>
-            <select onChange={handleChange} name="upvotes" id="upvotes">
+            <select onChange={handleSort} name="upvotes" id="upvotes">
               {options.map((option) => (
                 <option value={option.value}>{option.label}</option>
               ))}
@@ -54,3 +58,8 @@ export default function Header() {
     </>
   );
 }
+
+// sortfeedbacks prima niz i prima nacin sortiranja,ta 2 treba da se porede
+
+// [1,2,3,4].sort((a,b)=>a-b)
+// [{comments:12},{comments:12}].sort((a,b)a.comments-b.comments)

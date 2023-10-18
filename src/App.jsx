@@ -15,6 +15,7 @@ import "./App.css";
 export const Consumer = createContext();
 function App() {
   const [feedbacks, setFeedbacks] = useState({ productRequests: [] });
+
   const [isLoading, setIsLoading] = useState(false);
   const getData = async () => {
     setIsLoading(true);
@@ -29,6 +30,20 @@ function App() {
     });
     setFeedbacks((prev) => ({ ...prev, productRequests: update }));
   };
+
+  const sortFeedbacks = (suggestions, order) => {
+    if (order === "Least Upvotes")
+      return suggestions.sort((a, b) => a.upvotes - b.upvotes);
+
+    if (order === "Most Upvotes")
+      return suggestions.sort((a, b) => b.upvotes - a.upvotes);
+
+    if (order === "Least Comments")
+      return suggestions.sort((a, b) => a.comments.length - b.comments.length);
+
+    return suggestions.sort((a, b) => b.comments.length - a.comments.length);
+  };
+  const [order, setOrder] = useState("Most Upvotes");
   return (
     <Consumer.Provider
       value={{
@@ -36,6 +51,8 @@ function App() {
         isLoading,
         getData,
         feedbacks,
+        order,
+        setOrder,
       }}
     >
       <Routes>
