@@ -36,7 +36,7 @@ export default function Header() {
         <div className="suggestion-left">
           <div className="suggestion-number">
             <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
-            <h6>{feedbacks.productRequests.length}</h6>
+            <h6>{feedbacks?.length}</h6>
             <h5>Suggestions</h5>
           </div>
 
