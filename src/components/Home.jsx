@@ -1,8 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Sidebar from './Sidebar';
-import SuggestionsList from './SuggestionsList';
-import { getFeedbacks } from '../api/api';
-import { Consumer } from '../App';
+import React, { useContext, useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import SuggestionsList from "./SuggestionsList";
+
+import Header from "./Header";
+
+import { getFeedbacks } from "../api/api";
+import { Consumer } from "../App";
 
 export default function Home() {
   const { getData, isLoading, feedbacks, filterSuggestion } =
@@ -19,7 +22,8 @@ export default function Home() {
         filterSuggestion={filterSuggestion}
       ></Sidebar>
       <div>
-        <SuggestionsList />
+        <Header></Header>
+        <SuggestionsList></SuggestionsList>
       </div>
     </>
   );
