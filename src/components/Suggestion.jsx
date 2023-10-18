@@ -8,7 +8,7 @@ export default function Suggestion({ cardDetails = {} }) {
   const navigate = useNavigate();
   const handleUpvote = async (e) => {
     e.stopPropagation();
-    const data = await upvoteFeedback(cardDetails.id);
+    const data = await upvoteFeedback(cardDetails.id, () => navigate("/error"));
     updateSugestion(data);
   };
   return (

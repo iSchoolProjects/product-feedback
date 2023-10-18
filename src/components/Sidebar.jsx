@@ -81,7 +81,7 @@ export default function Sidebar({ products, label, status, filterSuggestion }) {
             </div>
             <button
               type="button"
-              class="btn-close btn-close-white"
+              className="btn-close btn-close-white"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
