@@ -1,13 +1,13 @@
 import React, { createContext, useState } from 'react';
 import SuggestionDetails from './components/SuggestionDetails';
-import { Route, Routes } from 'react-router';
 import Home from './components/Home';
 import { getFeedbacks } from './api/api';
 import EditFeedback from './components/EditFeedback';
 import NewFeedback from './components/NewFeedback';
 import Roadmap from './components/Roadmap';
-import NoFeedbackPage from './components/NoFeedbackPage';
 import './App.css';
+import { Route, Routes, useNavigate } from 'react-router';
+import ErrorMessage from './components/ErrorMessage';
 
 // function App() {
 //   return <SuggestionDetails detail={data.productRequests[0]} />;
@@ -15,20 +15,33 @@ import './App.css';
 
 export const Consumer = createContext();
 function App() {
-  const [feedbacks, setFeedbacks] = useState({ productRequests: [] });
+  const [baseFeedbacks, setBaseFeedbacks] = useState({ productRequests: [] });
+  const [feedbacks, setFeedback] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const getData = async () => {
     setIsLoading(true);
     const results = await getFeedbacks();
-    setFeedbacks(results);
+    setBaseFeedbacks(results);
+    setFeedback(results.productRequests);
     setIsLoading(false);
   };
-  const updateSugestion = async (sugestion) => {
-    const update = feedbacks.productRequests.map((product) => {
+  const updateSugestion = (sugestion) => {
+    const update = baseFeedbacks.productRequests.map((product) => {
       if (product.id === sugestion.id) return sugestion;
       return product;
     });
-    setFeedbacks((prev) => ({ ...prev, productRequests: update }));
+    setBaseFeedbacks((prev) => ({ ...prev, productRequests: update }));
+    setFeedback(update);
+  };
+
+  const filterSuggestion = (filters) => {
+    if (!filters.length) return setFeedback(baseFeedbacks.productRequests);
+    const filter = baseFeedbacks.productRequests.filter((product) => {
+      return filters.includes(product.category);
+    });
+    console.log(filters);
+    setFeedback(filter);
   };
   return (
     <Consumer.Provider
@@ -37,6 +50,7 @@ function App() {
         isLoading,
         getData,
         feedbacks,
+        filterSuggestion,
       }}
     >
       <Routes>
@@ -44,8 +58,8 @@ function App() {
         <Route path="/feedback/:id" Component={SuggestionDetails} />
         <Route path="/new-feedback" Component={NewFeedback} />
         <Route path="/edit-feedback/:id" Component={EditFeedback} />
-
         <Route path="/roadmap" Component={Roadmap} />
+        <Route path="/error" Component={ErrorMessage} />
       </Routes>
     </Consumer.Provider>
   );

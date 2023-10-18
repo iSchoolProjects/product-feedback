@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Buttons from './Buttons';
+
 import { NavLink } from 'react-router-dom';
-export default function Sidebar({ products, label, status }) {
+export default function Sidebar({ products, label, status, filterSuggestion }) {
   const [filters, setFilter] = useState([]);
   const [item, setItem] = useState();
   const getByStatus = (products) => {
@@ -28,6 +29,7 @@ export default function Sidebar({ products, label, status }) {
     if (pill === 'All') filteredData = [];
     if (filteredData.length === pills.length - 1) filteredData = [];
     setFilter(filteredData);
+    filterSuggestion(filteredData.map((f) => f.toLowerCase()));
   };
   //da li je pill all
   //handleClick funkcija koja prima naziv kliknutog elementa i radi
@@ -36,7 +38,7 @@ export default function Sidebar({ products, label, status }) {
   // nakon tih provjera, setuje filter state na nove vrijednosti
   //ptreban nam je state, prazan niz je pocetna vr
 
-  const pills = ['All', 'UI', 'UX', 'Enchancement', 'Bug', 'Feature'];
+  const pills = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
   return (
     <>
       <aside className="d-none d-md-flex">
@@ -79,7 +81,7 @@ export default function Sidebar({ products, label, status }) {
             </div>
             <button
               type="button"
-              class="btn-close btn-close-white"
+              className="btn-close btn-close-white"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
