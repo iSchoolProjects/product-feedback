@@ -1,0 +1,42 @@
+.no-feedback-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  background-color: #ffff;
+  height: 50vh;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 40px;
+}
+
+.no-feedback-holder h2 {
+  color: #3a4374;
+}
+
+.no-feedback-holder p {
+  color: #647196;
+}
+
+.no-feedback-holder .text {
+  width: 60%;
+  text-align: center;
+}
+
+.no-feedback-holder button {
+  border: 0;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: white;
+  background-color: #ad1fea;
+  margin-top: 20px;
+}
+
+.no-feedback-holder button:hover {
+  cursor: pointer;
+  background-color: #c75af6;
+}
+
+.no-feedback-holder img {
+  margin-right: 5px;
+}

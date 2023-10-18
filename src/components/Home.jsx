@@ -14,10 +14,7 @@ export default function Home() {
   if (isLoading) return null;
   return (
     <>
-      <Sidebar
-        products={feedbacks}
-        filterSuggestion={filterSuggestion}
-      ></Sidebar>
+      <Sidebar products={feedbacks} filterSuggestion={filterSuggestion} />
       <div>
         <SuggestionsList />
       </div>
