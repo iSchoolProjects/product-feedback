@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router";
-import NewComment from "./CommentCharacters";
-import CommentsHolder from "./CommentsHolder";
-import { createReply, getFeedback, upvoteFeedback } from "../api/api";
-import { Consumer } from "../App";
-import { createComment } from "../api/api";
-
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import NewComment from './CommentCharacters';
+import CommentsHolder from './CommentsHolder';
+import { createReply, getFeedback, upvoteFeedback } from '../api/api';
+import { Consumer } from '../App';
+import { createComment } from '../api/api';
+import { NavLink } from 'react-router-dom';
 export default function SuggestionDetails() {
   const { updateSugestion } = useContext(Consumer);
   const [detail, setDetail] = useState({});
@@ -30,6 +30,7 @@ export default function SuggestionDetails() {
       setDetail(reply);
     }
   };
+
   const handleClick = (currentReply) => {
     setIsReplyOpen(currentReply);
   };
@@ -57,11 +58,13 @@ export default function SuggestionDetails() {
         <div className="navigation-feedback">
           <div className="navigation">
             <img src="../assets/shared/icon-arrow-left.svg" alt="" />
-            <a onClick={() => navigate("/")} href="#">
+            <a onClick={() => navigate('/')} href="#">
               Go Back
             </a>
           </div>
-          <button>Edit Feedback</button>
+          <button>
+            <NavLink to={`/edit-feedback/${id}`}>Edit Feedback</NavLink>
+          </button>
         </div>
         <div className="suggestion">
           <div className="left-side" onClick={handleUpvote}>
