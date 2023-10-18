@@ -15,21 +15,33 @@ import Roadmap from "./components/Roadmap";
 
 export const Consumer = createContext();
 function App() {
-  const [feedbacks, setFeedbacks] = useState({ productRequests: [] });
+  const [baseFeedbacks, setBaseFeedbacks] = useState({ productRequests: [] });
+  const [feedbacks, setFeedback] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const getData = async () => {
     setIsLoading(true);
-    const results = await getFeedbacks(() => navigate("/error"));
-    setFeedbacks(results);
+    const results = await getFeedbacks();
+    setBaseFeedbacks(results);
+    setFeedback(results.productRequests);
     setIsLoading(false);
   };
-  const updateSugestion = async (sugestion) => {
-    const update = feedbacks.productRequests.map((product) => {
+  const updateSugestion = (sugestion) => {
+    const update = baseFeedbacks.productRequests.map((product) => {
       if (product.id === sugestion.id) return sugestion;
       return product;
     });
-    setFeedbacks((prev) => ({ ...prev, productRequests: update }));
+    setBaseFeedbacks((prev) => ({ ...prev, productRequests: update }));
+    setFeedback(update);
+  };
+
+  const filterSuggestion = (filters) => {
+    if (!filters.length) return setFeedback(baseFeedbacks.productRequests);
+    const filter = baseFeedbacks.productRequests.filter((product) => {
+      return filters.includes(product.category);
+    });
+    console.log(filters);
+    setFeedback(filter);
   };
   return (
     <Consumer.Provider
@@ -38,6 +50,7 @@ function App() {
         isLoading,
         getData,
         feedbacks,
+        filterSuggestion,
       }}
     >
       <Routes>

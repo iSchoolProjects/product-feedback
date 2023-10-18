@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router";
-import { upvoteFeedback } from "../api/api";
-import { Consumer } from "../App";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router';
+import { upvoteFeedback } from '../api/api';
+import { Consumer } from '../App';
 
 export default function Suggestion({ cardDetails = {} }) {
   const { updateSugestion } = useContext(Consumer);
@@ -13,7 +13,7 @@ export default function Suggestion({ cardDetails = {} }) {
   };
   return (
     <>
-      <section onClick={() => navigate("/feedback/" + cardDetails.id)}>
+      <section onClick={() => navigate('/feedback/' + cardDetails.id)}>
         <div className="suggestion suggestion-width">
           <div className="left-side">
             <div className="click-num" onClick={handleUpvote}>
