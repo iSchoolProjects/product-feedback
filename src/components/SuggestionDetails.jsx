@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router';
-import NewComment from './CommentCharacters';
-import CommentsHolder from './CommentsHolder';
-import { createReply, getFeedback, upvoteFeedback } from '../api/api';
-import { Consumer } from '../App';
-import { createComment } from '../api/api';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router";
+import NewComment from "./CommentCharacters";
+import { NavLink } from "react-router-dom";
+import CommentsHolder from "./CommentsHolder";
+import { createReply, getFeedback, upvoteFeedback } from "../api/api";
+import { Consumer } from "../App";
+import { createComment } from "../api/api";
 export default function SuggestionDetails() {
   const { updateSugestion } = useContext(Consumer);
   const [detail, setDetail] = useState({});
@@ -51,16 +51,17 @@ export default function SuggestionDetails() {
     setDetail(data);
     updateSugestion(data);
   };
-
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
   return (
     <>
       <div className="details-section">
         <div className="navigation-feedback">
           <div className="navigation">
             <img src="../assets/shared/icon-arrow-left.svg" alt="" />
-            <a onClick={() => navigate('/')} href="#">
-              Go Back
-            </a>
+            <a onClick={handleBack}>Go Back</a>
           </div>
           <button>
             <NavLink to={`/edit-feedback/${id}`}>Edit Feedback</NavLink>

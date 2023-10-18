@@ -8,11 +8,6 @@ import Roadmap from './components/Roadmap';
 import './App.css';
 import { Route, Routes, useNavigate } from 'react-router';
 import ErrorMessage from './components/ErrorMessage';
-import NoFeedback from './components/NoFeedback';
-
-// function App() {
-//   return <SuggestionDetails detail={data.productRequests[0]} />;
-// }
 
 export const Consumer = createContext();
 function App() {
@@ -44,6 +39,20 @@ function App() {
     console.log(filters);
     setFeedback(filter);
   };
+
+  const sortFeedbacks = (suggestions, order) => {
+    if (order === 'Least Upvotes')
+      return suggestions.sort((a, b) => a.upvotes - b.upvotes);
+
+    if (order === 'Most Upvotes')
+      return suggestions.sort((a, b) => b.upvotes - a.upvotes);
+
+    if (order === 'Least Comments')
+      return suggestions.sort((a, b) => a.comments.length - b.comments.length);
+
+    return suggestions.sort((a, b) => b.comments.length - a.comments.length);
+  };
+  const [order, setOrder] = useState('Most Upvotes');
   return (
     <Consumer.Provider
       value={{
@@ -51,6 +60,8 @@ function App() {
         isLoading,
         getData,
         feedbacks,
+        order,
+        setOrder,
         filterSuggestion,
       }}
     >
