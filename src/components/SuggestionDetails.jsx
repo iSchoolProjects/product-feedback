@@ -16,13 +16,17 @@ export default function SuggestionDetails() {
 
   const postComment = async (comment) => {
     if (id) {
-      const newComment = await createComment(id, comment);
+      const newComment = await createComment(id, comment, () =>
+        navigate("/error")
+      );
       setDetail(newComment);
     }
   };
   const postReply = async (parent, comment) => {
     if (id) {
-      const reply = await createReply(id, parent, comment);
+      const reply = await createReply(id, parent, comment, () =>
+        navigate("/error")
+      );
       setDetail(reply);
     }
   };
@@ -30,7 +34,7 @@ export default function SuggestionDetails() {
     setIsReplyOpen(currentReply);
   };
   const getData = async () => {
-    const result = await getFeedback(id);
+    const result = await getFeedback(id, () => navigate("/error"));
     setDetail(result);
   };
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function SuggestionDetails() {
 
   const handleUpvote = async (e) => {
     e.stopPropagation();
-    const data = await upvoteFeedback(id);
+    const data = await upvoteFeedback(id, () => navigate("/error"));
     setDetail(data);
     updateSugestion(data);
   };
