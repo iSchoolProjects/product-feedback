@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import SuggestionsList from "./SuggestionsList";
 
-import { Consumer } from "../App";
 import Header from "./Header";
 
 import { getFeedbacks } from "../api/api";
