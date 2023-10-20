@@ -5,7 +5,6 @@ import { getFeedbacks } from './api/api';
 import EditFeedback from './components/EditFeedback';
 import NewFeedback from './components/NewFeedback';
 import Roadmap from './components/Roadmap';
-import './App.css';
 import { Route, Routes, useNavigate } from 'react-router';
 import ErrorMessage from './components/ErrorMessage';
 
