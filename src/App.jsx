@@ -1,16 +1,12 @@
-import React, { createContext, useState } from "react";
-import SuggestionDetails from "./components/SuggestionDetails";
-import { Route, Routes, useNavigate } from "react-router";
-import Home from "./components/Home";
-import { getFeedbacks } from "./api/api";
-import EditFeedback from "./components/EditFeedback";
-import NewFeedback from "./components/NewFeedback";
-import ErrorMessage from "./components/ErrorMessage";
-import Roadmap from "./components/Roadmap";
-
-// function App() {
-//   return <SuggestionDetails detail={data.productRequests[0]} />;
-// }
+import React, { createContext, useState } from 'react';
+import SuggestionDetails from './components/SuggestionDetails';
+import Home from './components/Home';
+import { getFeedbacks } from './api/api';
+import EditFeedback from './components/EditFeedback';
+import NewFeedback from './components/NewFeedback';
+import Roadmap from './components/Roadmap';
+import { Route, Routes, useNavigate } from 'react-router';
+import ErrorMessage from './components/ErrorMessage';
 
 export const Consumer = createContext();
 function App() {
@@ -44,18 +40,18 @@ function App() {
   };
 
   const sortFeedbacks = (suggestions, order) => {
-    if (order === "Least Upvotes")
+    if (order === 'Least Upvotes')
       return suggestions.sort((a, b) => a.upvotes - b.upvotes);
 
-    if (order === "Most Upvotes")
+    if (order === 'Most Upvotes')
       return suggestions.sort((a, b) => b.upvotes - a.upvotes);
 
-    if (order === "Least Comments")
+    if (order === 'Least Comments')
       return suggestions.sort((a, b) => a.comments.length - b.comments.length);
 
     return suggestions.sort((a, b) => b.comments.length - a.comments.length);
   };
-  const [order, setOrder] = useState("Most Upvotes");
+  const [order, setOrder] = useState('Most Upvotes');
   return (
     <Consumer.Provider
       value={{
