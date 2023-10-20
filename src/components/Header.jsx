@@ -35,25 +35,27 @@ export default function Header({ isHome }) {
       <header>
         <div className="suggestion-left">
           {isHome ? (
-            <div className="suggestion-number">
-              <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
-              <h6>{feedbacks?.length}</h6>
-              <h5>Suggestions</h5>
-            </div>
+            <>
+              <div className="suggestion-number">
+                <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
+                <h6>{feedbacks?.length}</h6>
+                <h5>Suggestions</h5>
+              </div>
+              <div className="sort">
+                <label for="upvotes">Sort by:</label>
+                <select onChange={handleSort} name="upvotes" id="upvotes">
+                  {options.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </div>
+            </>
           ) : (
             <div>
               <p>Go back</p>
               <p>Roadmap</p>
             </div>
           )}
-          <div className="sort">
-            <label for="upvotes">Sort by:</label>
-            <select onChange={handleSort} name="upvotes" id="upvotes">
-              {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
-              ))}
-            </select>
-          </div>
         </div>
 
         <Link to="/new-feedback">

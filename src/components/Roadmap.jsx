@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { data } from '../data';
-import Roadmapcard from './Roadmapcard';
-import { RoadmapMapEnum } from '../RoadmapMap';
+import React, { useEffect, useState } from "react";
+import { data } from "../data";
+import Roadmapcard from "./Roadmapcard";
+import { RoadmapMapEnum } from "../RoadmapMap";
+import Header from "./Header";
 export default function Roadmap({ item = data.productRequests }) {
-  const [activeTab, setActiveTab] = useState('planned');
+  const [activeTab, setActiveTab] = useState("planned");
   const [cards, setCard] = useState({});
   const getCard = () => {
     const newArray = {};
@@ -30,15 +31,16 @@ export default function Roadmap({ item = data.productRequests }) {
 
   return (
     <>
+      <Header />
       <div className="roadmap-holder">
         <div className="navigation">
           {Object.entries(cards).map(([key, card]) => (
             <div className="container">
               <button
-                className={`${key === activeTab ? 'active-tab' : ''} ${key}`}
+                className={`${key === activeTab ? "active-tab" : ""} ${key}`}
                 onClick={() => handleClick(key)}
               >
-                {key.replace('-', ' ')} ({card.length})
+                {key.replace("-", " ")} ({card.length})
               </button>
             </div>
           ))}
@@ -50,7 +52,7 @@ export default function Roadmap({ item = data.productRequests }) {
           <div className="main-container">
             <div className="schedule">
               <h2>
-                {key.replace('-', ' ')} ({card?.length})
+                {key.replace("-", " ")} ({card?.length})
               </h2>
 
               <p> {RoadmapMapEnum[key]}</p>
