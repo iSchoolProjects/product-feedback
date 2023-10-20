@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import SuggestionDetails from "./components/SuggestionDetails";
 import { Route, Routes, useNavigate } from "react-router";
 import Home from "./components/Home";
@@ -17,6 +17,7 @@ function App() {
   const [baseFeedbacks, setBaseFeedbacks] = useState({ productRequests: [] });
   const [feedbacks, setFeedback] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [order, setOrder] = useState("Most Upvotes");
   const navigate = useNavigate();
   const getData = async () => {
     setIsLoading(true);
@@ -55,7 +56,10 @@ function App() {
 
     return suggestions.sort((a, b) => b.comments.length - a.comments.length);
   };
-  const [order, setOrder] = useState("Most Upvotes");
+  useEffect(() => {
+    const ordered = sortFeedbacks([...feedbacks], order);
+    setFeedback(ordered);
+  }, [order, JSON.stringify(feedbacks)]);
   return (
     <Consumer.Provider
       value={{

@@ -22,7 +22,7 @@ export default function Home() {
         filterSuggestion={filterSuggestion}
       ></Sidebar>
       <div>
-        <Header></Header>
+        <Header isHome></Header>
         <SuggestionsList></SuggestionsList>
       </div>
     </>

@@ -24,7 +24,7 @@ const options = [
   },
 ];
 
-export default function Header() {
+export default function Header({ isHome }) {
   const { feedbacks, setOrder } = useContext(Consumer);
   const handleSort = (e) => {
     setOrder(e.target.value);
@@ -34,12 +34,18 @@ export default function Header() {
     <>
       <header>
         <div className="suggestion-left">
-          <div className="suggestion-number">
-            <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
-            <h6>{feedbacks?.length}</h6>
-            <h5>Suggestions</h5>
-          </div>
-
+          {isHome ? (
+            <div className="suggestion-number">
+              <img src="/assets/suggestions/icon-suggestions.svg" alt="" />
+              <h6>{feedbacks?.length}</h6>
+              <h5>Suggestions</h5>
+            </div>
+          ) : (
+            <div>
+              <p>Go back</p>
+              <p>Roadmap</p>
+            </div>
+          )}
           <div className="sort">
             <label for="upvotes">Sort by:</label>
             <select onChange={handleSort} name="upvotes" id="upvotes">
