@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Sidebar products={feedbacks} filterSuggestion={filterSuggestion} />
       <div>
-        <Header></Header>
+        <Header isHome></Header>
         <SuggestionsList></SuggestionsList>
       </div>
     </>
