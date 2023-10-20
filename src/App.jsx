@@ -67,13 +67,13 @@ function App() {
         setOrder,
         filterSuggestion,
       }}
-    >
+    > 
       <Routes>
         <Route path="/" index Component={Home} />
         <Route path="/feedback/:id" Component={SuggestionDetails} />
         <Route path="/new-feedback" Component={NewFeedback} />
         <Route path="/edit-feedback/:id" Component={EditFeedback} />
-        <Route path="/roadmap" Component={() => <h1>Roadmap</h1>} />
+        <Route path="/roadmap" Component={Roadmap} />
         <Route path="/error" Component={ErrorMessage} />
       </Routes>
     </Consumer.Provider>
