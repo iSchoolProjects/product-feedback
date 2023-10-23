@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import { getFeedbacks } from "./api/api";
 import EditFeedback from "./components/EditFeedback";
 import NewFeedback from "./components/NewFeedback";
-import "./App.css";
 import ErrorMessage from "./components/ErrorMessage";
 import Roadmap from "./components/Roadmap";
 
@@ -18,7 +17,8 @@ function App() {
   const [baseFeedbacks, setBaseFeedbacks] = useState({ productRequests: [] });
   const [feedbacks, setFeedback] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [order, setOrder] = useState();
+
+  const [order, setOrder] = useState("Most Upvotes");
   const navigate = useNavigate();
   const getData = async () => {
     setIsLoading(true);
@@ -80,7 +80,7 @@ function App() {
         <Route path="/feedback/:id" Component={SuggestionDetails} />
         <Route path="/new-feedback" Component={NewFeedback} />
         <Route path="/edit-feedback/:id" Component={EditFeedback} />
-        <Route path="/roadmap" Component={() => <h1>Roadmap</h1>} />
+        <Route path="/roadmap" Component={Roadmap} />
         <Route path="/error" Component={ErrorMessage} />
       </Routes>
     </Consumer.Provider>
