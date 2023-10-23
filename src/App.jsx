@@ -17,6 +17,7 @@ function App() {
   const [baseFeedbacks, setBaseFeedbacks] = useState({ productRequests: [] });
   const [feedbacks, setFeedback] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   const [order, setOrder] = useState("Most Upvotes");
   const navigate = useNavigate();
   const getData = async () => {
@@ -56,10 +57,12 @@ function App() {
 
     return suggestions.sort((a, b) => b.comments.length - a.comments.length);
   };
+
   useEffect(() => {
     const ordered = sortFeedbacks([...feedbacks], order);
     setFeedback(ordered);
   }, [order, JSON.stringify(feedbacks)]);
+
   return (
     <Consumer.Provider
       value={{
